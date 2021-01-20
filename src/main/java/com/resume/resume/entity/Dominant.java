@@ -26,7 +26,7 @@ import lombok.AllArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("resume_dominant")
-@ApiModel(value="Dominant对象")
+@ApiModel(value="个人优势对象")
 public class Dominant implements Serializable {
 private static final long serialVersionUID = 1L;
 

@@ -15,7 +15,7 @@ import com.resume.resume.entity.Dominant;
 * @since 2021-01-20
 */
 @RestController
-@RequestMapping("/resume/dominant")
+@RequestMapping("/dominant")
 public class DominantController {
 
     private final IDominantService service;
