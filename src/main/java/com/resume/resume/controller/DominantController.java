@@ -42,9 +42,9 @@ public class DominantController {
         return JSONResult.ok("删除完成");
     }
 
-    @GetMapping
-    public JSONResult getDominantByCondition(){
-        return JSONResult.ok(service.list(new QueryWrapper<Dominant>()));
+    @GetMapping("{id}")
+    public JSONResult getDominantByCondition(@PathVariable Long id){
+        return JSONResult.ok(service.getOne(new QueryWrapper<Dominant>().eq("information_id",id)));
     }
 
     @GetMapping("/{page}/{size}")

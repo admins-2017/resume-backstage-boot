@@ -42,9 +42,9 @@ public class WorkExperienceController {
         return JSONResult.ok("删除完成");
     }
 
-    @GetMapping
-    public JSONResult getWorkExperienceByCondition(){
-        return JSONResult.ok(service.list(new QueryWrapper<WorkExperience>()));
+    @GetMapping("/{id}")
+    public JSONResult getWorkExperienceByCondition(@PathVariable Long id){
+        return JSONResult.ok(service.list(new QueryWrapper<WorkExperience>().eq("information_id", id)));
     }
 
     @GetMapping("/{page}/{size}")

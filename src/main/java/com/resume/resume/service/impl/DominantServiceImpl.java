@@ -24,7 +24,7 @@ public class DominantServiceImpl extends ServiceImpl<DominantMapper, Dominant> i
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void updateDominant(Dominant dto){
-        update(new UpdateWrapper<Dominant>());
+        update(new UpdateWrapper<Dominant>().set("dominant_detail",dto.getDominantDetail()).eq("information_id",dto.getInformationId()));
     }
 
     @Override

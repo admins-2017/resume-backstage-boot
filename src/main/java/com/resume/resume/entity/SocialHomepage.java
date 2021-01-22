@@ -1,5 +1,7 @@
 package com.resume.resume.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -29,6 +31,7 @@ public class SocialHomepage implements Serializable {
 private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "社交主页id")
+    @TableId(value = "social_id",type = IdType.AUTO)
     private Integer socialId;
     @ApiModelProperty(value = "QQ号")
     private String socialQq;

@@ -24,7 +24,14 @@ public class ExpectServiceImpl extends ServiceImpl<ExpectMapper, Expect> impleme
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void updateExpect(Expect dto){
-        update(new UpdateWrapper<Expect>());
+        update(new UpdateWrapper<Expect>()
+                .set(dto.getExpectAddress()!=null&&!dto.getExpectAddress().equals(""),"expect_address",dto.getExpectAddress())
+                .set(dto.getExpectPosition()!=null&&!dto.getExpectPosition().equals(""),"expect_position",dto.getExpectPosition())
+                .set(dto.getExpectRemark()!=null&&!dto.getExpectRemark().equals(""),"expect_remark",dto.getExpectRemark())
+                .set(dto.getExpectSalary()!=null&&!dto.getExpectSalary().equals(""),"expect_salary",dto.getExpectSalary())
+                .set(dto.getExpectType()!=null&&!dto.getExpectType().equals(""),"expect_type",dto.getExpectType())
+                .eq("expect_id",dto.getExpectId())
+        );
     }
 
     @Override

@@ -24,7 +24,12 @@ public class SocialHomepageServiceImpl extends ServiceImpl<SocialHomepageMapper,
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void updateSocialHomepage(SocialHomepage dto){
-        update(new UpdateWrapper<SocialHomepage>());
+        update(new UpdateWrapper<SocialHomepage>()
+                .set(dto.getSocialGithub()!=null&&!dto.getSocialGithub().equals("social_github"),"",dto.getSocialGithub())
+                .set(dto.getSocialOther()!=null&&!dto.getSocialOther().equals("social_other"),"",dto.getSocialOther())
+                .set(dto.getSocialQq()!=null&&!dto.getSocialQq().equals(""),"social_qq",dto.getSocialQq())
+                .set(dto.getSocialWechat()!=null&&!dto.getSocialWechat().equals(""),"social_wechat",dto.getSocialWechat())
+                .eq("information_id",dto.getInformationId()));
     }
 
     @Override

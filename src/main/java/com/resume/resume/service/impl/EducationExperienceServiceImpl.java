@@ -24,7 +24,15 @@ public class EducationExperienceServiceImpl extends ServiceImpl<EducationExperie
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void updateEducationExperience(EducationExperience dto){
-        update(new UpdateWrapper<EducationExperience>());
+        update(new UpdateWrapper<EducationExperience>()
+                .set(dto.getEducationSchool()!=null&&!dto.getEducationSchool().equals(""),"education_school",dto.getEducationSchool())
+                .set(dto.getEducationHighestEducation()!=null&&!dto.getEducationHighestEducation().equals(""),"education_highest_education",dto.getEducationHighestEducation())
+                .set(dto.getEducationProfession()!=null&&!dto.getEducationProfession().equals(""),"education_profession",dto.getEducationProfession())
+                .set(dto.getEducationSchoolExperience()!=null&&!dto.getEducationSchoolExperience().equals(""),"education_school_experience",dto.getEducationSchoolExperience())
+                .set(dto.getEducationStartTime()!=null&&!dto.getEducationStartTime().equals(""),"education_start_time",dto.getEducationStartTime())
+                .set(dto.getEducationEndTime()!=null&&!dto.getEducationEndTime().equals(""),"education_end_time",dto.getEducationEndTime())
+                .eq("information_id",dto.getInformationId())
+        );
     }
 
     @Override

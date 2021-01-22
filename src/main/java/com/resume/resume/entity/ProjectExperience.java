@@ -27,7 +27,7 @@ import lombok.AllArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("resume_project_experience")
-@ApiModel(value="ProjectExperience对象")
+@ApiModel(value="项目经历实体对象")
 public class ProjectExperience implements Serializable {
 private static final long serialVersionUID = 1L;
 

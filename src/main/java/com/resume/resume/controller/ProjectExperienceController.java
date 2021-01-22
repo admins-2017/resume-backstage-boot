@@ -42,9 +42,9 @@ public class ProjectExperienceController {
         return JSONResult.ok("删除完成");
     }
 
-    @GetMapping
-    public JSONResult getProjectExperienceByCondition(){
-        return JSONResult.ok(service.list(new QueryWrapper<ProjectExperience>()));
+    @GetMapping("/{id}")
+    public JSONResult getProjectExperienceByCondition(@PathVariable Long id){
+        return JSONResult.ok(service.list(new QueryWrapper<ProjectExperience>().eq("information_id",id).orderByAsc("project_start_time")));
     }
 
     @GetMapping("/{page}/{size}")

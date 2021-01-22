@@ -24,7 +24,16 @@ public class WorkExperienceServiceImpl extends ServiceImpl<WorkExperienceMapper,
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void updateWorkExperience(WorkExperience dto){
-        update(new UpdateWrapper<WorkExperience>());
+        update(new UpdateWrapper<WorkExperience>()
+            .set(dto.getExperienceCompanyName()!=null&&!dto.getExperienceCompanyName().equals(""),"experience_company_name",dto.getExperienceCompanyName())
+            .set(dto.getExperienceDepartment()!=null&&!dto.getExperienceDepartment().equals(""),"experience_department",dto.getExperienceDepartment())
+            .set(dto.getExperienceIndustry()!=null&&!dto.getExperienceIndustry().equals(""),"experience_industry",dto.getExperienceIndustry())
+            .set(dto.getExperiencePosition()!=null&&!dto.getExperiencePosition().equals(""),"experience_position",dto.getExperiencePosition())
+            .set(dto.getExperienceWorkContent()!=null&&!dto.getExperienceWorkContent().equals(""),"experience_work_content",dto.getExperienceWorkContent())
+            .set(dto.getExperienceWorkStartDate()!=null&&!dto.getExperienceWorkStartDate().equals(""),"experience_work_start_date",dto.getExperienceWorkStartDate())
+            .set(dto.getExperienceWorkEndDate()!=null&&!dto.getExperienceWorkEndDate().equals(""),"experience_work_end_date",dto.getExperienceWorkEndDate())
+            .eq("experience_id",dto.getExperienceId())
+        );
     }
 
     @Override

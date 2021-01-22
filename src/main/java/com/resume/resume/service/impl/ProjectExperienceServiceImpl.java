@@ -24,7 +24,16 @@ public class ProjectExperienceServiceImpl extends ServiceImpl<ProjectExperienceM
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void updateProjectExperience(ProjectExperience dto){
-        update(new UpdateWrapper<ProjectExperience>());
+        update(new UpdateWrapper<ProjectExperience>()
+                .set(dto.getProjectDemonstrateAddress()!=null&&!dto.getProjectDemonstrateAddress().equals(""),"project_demonstrate_address",dto.getProjectDemonstrateAddress())
+                .set(dto.getProjectName()!=null&&!dto.getProjectName().equals(""),"project_name",dto.getProjectName())
+                .set(dto.getProjectDescription()!=null&&!dto.getProjectDescription().equals(""),"project_description",dto.getProjectDescription())
+                .set(dto.getProjectRemark()!=null&&!dto.getProjectRemark().equals(""),"project_remark",dto.getProjectRemark())
+                .set(dto.getProjectRole()!=null&&!dto.getProjectRole().equals(""),"project_role",dto.getProjectRole())
+                .set(dto.getProjectStartTime()!=null&&!dto.getProjectStartTime().equals(""),"project_start_time",dto.getProjectStartTime())
+                .set(dto.getProjectEndTime()!=null&&!dto.getProjectEndTime().equals(""),"project_end_time",dto.getProjectEndTime())
+                .eq("project_id",dto.getProjectId())
+        );
     }
 
     @Override

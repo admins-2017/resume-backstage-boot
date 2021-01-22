@@ -42,9 +42,9 @@ public class ExpectController {
         return JSONResult.ok("删除完成");
     }
 
-    @GetMapping
-    public JSONResult getExpectByCondition(){
-        return JSONResult.ok(service.list(new QueryWrapper<Expect>()));
+    @GetMapping("/{id}")
+    public JSONResult getExpectByCondition(@PathVariable Long id){
+        return JSONResult.ok(service.list(new QueryWrapper<Expect>().eq("information_id", id)));
     }
 
     @GetMapping("/{page}/{size}")

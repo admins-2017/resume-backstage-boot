@@ -42,9 +42,9 @@ public class SocialHomepageController {
         return JSONResult.ok("删除完成");
     }
 
-    @GetMapping
-    public JSONResult getSocialHomepageByCondition(){
-        return JSONResult.ok(service.list(new QueryWrapper<SocialHomepage>()));
+    @GetMapping("/{id}")
+    public JSONResult getSocialHomepageByCondition(@PathVariable Long id){
+        return JSONResult.ok(service.getOne(new QueryWrapper<SocialHomepage>().eq("information_id", id)));
     }
 
     @GetMapping("/{page}/{size}")

@@ -42,9 +42,9 @@ public class EducationExperienceController {
         return JSONResult.ok("删除完成");
     }
 
-    @GetMapping
-    public JSONResult getEducationExperienceByCondition(){
-        return JSONResult.ok(service.list(new QueryWrapper<EducationExperience>()));
+    @GetMapping("/{id}")
+    public JSONResult getEducationExperienceByCondition(@PathVariable Long id){
+        return JSONResult.ok(service.getOne(new QueryWrapper<EducationExperience>().eq("information_id", id)));
     }
 
     @GetMapping("/{page}/{size}")
